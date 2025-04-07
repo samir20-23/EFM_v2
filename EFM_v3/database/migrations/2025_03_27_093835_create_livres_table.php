@@ -11,20 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('apprenant', function (Blueprint $table) {
+        Schema::create('livres', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('active')->default(true);
             $table->timestamps();
+            $table->string('titre');
+            $table->string('auteur');
+            $table->integer('nombre_pages');
+            $table->string('categorie');
         });
-    }
-
-    /**
+    } 
+    /** 
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('apprenant');
+        Schema::dropIfExists('livres');
     }
 };

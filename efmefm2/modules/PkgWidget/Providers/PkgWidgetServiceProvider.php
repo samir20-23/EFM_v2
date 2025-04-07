@@ -10,7 +10,6 @@ class PkgWidgetServiceProvider extends ServiceProvider
     {
         // Charger les routes
         $this->loadRoutesFrom(__DIR__ . '/../routes.php');
-
         // Charger les vues
         $this->loadViewsFrom(__DIR__ . '/../Views', 'PkgWidget');
     }
