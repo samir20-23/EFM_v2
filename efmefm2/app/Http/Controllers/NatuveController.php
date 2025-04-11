@@ -12,11 +12,25 @@ class NatuveController extends Controller
 {
     public function __construct(protected NatuveService $service) {}
 
-    public function index(Request $request) {
+
+    public function index(Request $request)
+    {
         $natuves = $this->service->list($request->search);
         return view('natuves.index', compact('natuves'));
-    }
 
+    
+        $NatuveQuery = Natuve::query();
+
+    
+        if ($request->has('natuve_id') && $request->natuve_id != '') {
+            $NatuveQuery->where('natuve_id', $request->natuve_id);
+        }
+    
+        $Natuve = $NatuveQuery->get();
+    
+        return view('natuves.index', compact( n'Natuve', 'natuves'));
+    }
+    
     public function create() {
         return view('natuves.create');
     }
